@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		<!-- jQuery -->
+  	<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  	<!-- jQuery END -->
+  	<!-- Bootstrap -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Bootstrap END -->
+	<!--[if lt IE 9]>
+   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<!--moje -->	
+	    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+	       
+	<!--moje END -->	
+		<title>To Do App</title>
+	</head>
+	<body id="main-page">
+		<div id="head" class="container-fluid">
+			<div id="center">
+				<div id="logo">
+					<img src="../img/Flap.png" alt="Happy Duck" height="50" width="50">
+						<span id="My_">My</span><span id="_Call">Calendar</span>			
+				</div>
+				<div id="top-menu">
+					<div id="dropdown" class="dropdown vCenter">
+					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    Menu
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">		    
+					    <li><a href="#">Another action</a></li>
+					    <li><a href="#">Something else here</a></li>
+					    <li role="separator" class="divider"></li>
+					    <li><a href="#">Separated link</a></li>
+					    <li><a href="#">Logout</a></li>
+					  </ul>
+					</div><!--dropdown-->
+				</div><!--top-menu-->
+				<div id="clearer" class="clearer"></div>
+			</div>	<!--center-->
+		</div><!--head-->
+		<div id="banner">
+			<div id="clearer" class="clearer"></div>
+			<span id="b-content">Simple calendar and organizer v 0.2</span>
+		</div><!--banner-->
+		<div id="calendarBody">
+			<div id="twoColumn">
+				<div id="column1">
+					<div id="calendarTitleBar">
+						<button id="buttPrevious" type="button" class="btn-class leftSide" title="previous month">&#60;</button>
+						<button id="buttCurrent" type="button" class="btn-class leftSide" title="back to current month">&#57344;</button>
+						<button id="buttNext" type="button" class="btn-class leftSide" title="next month">&#62;</button>
+						<span id="textBanner"></span>
+						<button id="buttTudayView" type="button" class="btn-class rightSide">tuday</button>
+						<button id="buttWeekView" type="button" class="btn-class rightSide">week</button>
+						<button id="buttMonthView" type="button" class="btn-class rightSide">month</button>						
+						
+					</div>
+					<div id="calendar">
+						<!-- generatet by javascript-->
+					</div>
+				</div>
+			</div>
+			<!-- modal -->
+			<div id="mymodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridModalLabel">Event details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid bd-example-row">
+        	<div class="row">
+          	<label for="basic-url">Event</label>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+            	<div class="form-group"> 
+						<label for="sel1">type:</label>
+						<select class="form-control" id="eventSelect">
+							<option selected="selected">family event</option>
+							<option>buisnes event</option>
+							<option>birthday</option>
+							<option>party</option>
+						</select>
+					</div><!-- form group -->
+            </div><!-- col-md-6 -->
+            <div class="col-md-6">
+            	<label for="basic-url">Add new event</label>
+            	<div class="form-group">
+            		<input type="text" class="form-control" id="newEvent" aria-describedby="basic-addon3">            		
+            	</div><!-- form group -->
+            </div><!-- col-md-6 -->
+          </div><!-- row -->
+          <div class="row">
+          	<label for="basic-url">Enter date</label>
+          </div>
+          <div class="row">
+          	<div class="col-md-6">
+          		<label for="basic-url">Month</label>
+          		<table id="months">
+						<tr>
+						  <td>January</td>
+						  <td>February</td>
+						  <td>March</td>						  
+						</tr>
+						<tr>  
+							<td>April</td>
+						  <td>May</td>
+						  <td>June</td>						  
+						</tr>
+						<tr>
+						<td>July</td>
+						  <td>August</td>
+						  <td>September</td>
+						 </tr>
+						<tr> 
+						  <td>October</td>
+						  <td>November</td>
+						  <td>December</td>
+						</tr>
+					</table>
+          	</div><!-- col-md-6 -->
+          	<div class="col-md-6">
+          		<label for="basic-url">Day</label>
+          		<table class="">
+          			<thead></thead>
+          			<tbody id="days">
+	          			<tr>
+							  <td>01</td>
+							  <td>02</td>
+							  <td>03</td>
+							  <td>04</td>
+							  <td>05</td>
+							  <td>06</td>
+							  <td>07</td>
+							  <td>08</td>
+							</tr>
+							<tr>
+							  <td>09</td>
+							  <td>10</td>
+							  <td>11</td>
+							  <td>12</td>
+							  <td>13</td>
+							  <td>14</td>
+							  <td>15</td>
+							  <td>16</td>
+							</tr>
+							<tr>
+							  <td>17</td>
+							  <td>18</td>
+							  <td>19</td>
+							  <td>20</td>
+							  <td>21</td>
+							  <td>22</td>
+							  <td>23</td>
+							  <td>24</td>
+							</tr>
+							<tr>
+							  <td>25</td>
+							  <td>26</td>
+							  <td>27</td>
+							  <td>28</td>
+							  <td>29</td>
+							  <td>30</td>
+							  <td>31</td>
+							</tr>
+          			</tbody>						
+					</table>
+          	</div><!-- col-md-6 -->          	
+          </div><!-- row -->
+          <div class="row">
+          	<label for="basic-url">Result</label>
+          	<div id="result" class="form-control"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+		</div>
+		<div id="footer">
+			<a href="https://github.com/aldehydkrotonowy/todoapp/tree/master" target="blanc">source on github</a>			
+		</div>
+<script type="text/javascript" src="../js/myLib/mylib.js"></script>
+<script type="text/javascript" src="../js/calendar.js"></script>	 
+
+<!--
+<script type="text/javascript" src="../js/myLib/randColorDiv.js"></script>		
+-->
+	</body>
+</html>

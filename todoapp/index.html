@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	<!-- jQuery -->
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  	<!-- jQuery END -->
+  	<!-- Bootstrap -->
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- Bootstrap END -->
+	<title>TOOD app</title>	
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>	
+	<div class="container">
+
+<!-- Modal - -->
+<div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-md " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><b>Enter your login and password</b></h4>
+      </div>
+      <div class="modal-body">
+	      <form id="loginForm" class="form-horizontal" action="./php/login.php" method="POST" role="login">
+      		<div class="form-group">
+					  <label class="col-md-4 control-label" for="textinput">Login</label>  
+					  <div class="col-md-6 input-group">
+					  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+					  <input id="textinput" name="login" type="text" placeholder="Enter login" class="form-control input-md">
+					  </div>
+					</div>					
+					<!-- Password input-->
+					<div class="form-group">
+					  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+					  <div class="col-md-6 input-group">
+					  	<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+					    <input id="password" name="password" type="password" placeholder="Enter password" class="form-control input-md ">  
+					  </div>
+					</div>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="loginButton" type="submit" form="loginForm" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </div>
+</div><!--login modal end-->
+<!-- =========================================================- -->
+
+<div class="modal fade" id="myAccCreatenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-md " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><b>Enter details to create account</b></h4>
+      </div>
+      <div class="modal-body">
+
+			<form id="createAccForm" class="form-horizontal" name="createAccount" action="./php/createAccount.php" onSubmit="" method="POST" role="createAccount">
+				<fieldset>
+					<div class="form-group" id="form-group-name">					
+						<label class="col-md-4 control-label" for="textinput">Name</label>
+						<div class="col-md-6 input-group" id="nameInput">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+							<input id="userName" name="name" type="text" placeholder="name" class="form-control input-md">
+							<span id="s_nameWorningInfoGlyph"></span>		
+						</div>
+						<!-- here is dynamic div for message if name is not acceptable-->
+					</div>
+					<div class="form-group" id="form-group-surname">
+						<label class="col-md-4 control-label" for="textinput">Surname</label>
+						<div class="col-md-6 input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+							<input id="userSurname" name="surname" type="text" placeholder="surname" class="form-control input-md">
+							<span id="s_surnameWorningInfoGlyph"></span>	
+						</div>						
+					</div>
+					<div class="form-group" id="form-group-age">
+						<label class="col-md-4 control-label" for="textinput">Age</label>
+						<div class="col-md-6 input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+							<input id="userAge" name="age" type="text" placeholder="age" class="form-control input-md">
+							<span id="s_ageWorningInfoGlyph"></span>
+						</div>
+					</div>
+					<div class="form-group" id="form-group-email">						
+						<label class="col-md-4 control-label" for="textinput">E-mail</label>
+						<div class="col-md-6 input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+						<input id="userEmail" name="email" type="text" placeholder="email" class="form-control input-md">
+						<span id="s_emailWorningInfoGlyph"></span>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group" id="form-group-login">
+					  <label class="col-md-4 control-label" for="textinput">Login</label>  
+					  <div class="col-md-6 input-group">
+					  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+					  <input id="userLogin" name="login" type="text" placeholder="login" class="form-control input-md">
+					  <span id="s_loginWorningInfoGlyph"></span>
+					  </div>
+					</div>					
+					<!-- Password input-->
+					<div class="form-group" id="form-group-password">
+					  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+					  <div class="col-md-6 input-group">
+					  	<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+					    <input id="userPassword" name="password" type="password" placeholder="password" class="form-control input-md ">
+					    <span id="s_passwordWorningInfoGlyph"></span>  
+					  </div>
+					</div>
+					
+					<!-- Password input-->
+					<div class="form-group" id="form-group-confirmPass">
+					  <label class="col-md-4 control-label" for="passwordinput2">Confirm password</label>
+					  <div class="col-md-6 input-group">
+					  	<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+					    <input id="userPasswConfirm" name="password" type="password" placeholder="Confirm password" class="form-control input-md" />
+					    <span id="s_confirmPassWorningInfoGlyph"></span>
+					  </div>					  
+					</div>
+					<!-- this div is for message if passwords are the same or not-->
+				</fieldset>
+			</form>		
+			</div><!-- modal body-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="createAccButt" type="submit" form="createAccForm" class="btn btn-primary">Create account</button>
+      </div>
+		</div>
+		</div>
+</div><!--create account modal fade end-->
+<!-- ========================================================= -->
+	</div>
+
+
+<div class="jumbotron" id="test">
+  <div class="container" id="jumbCont">
+    <h1 class="myTitle">My TO DO application</h1>
+  <div  class="my_blacquote-reverse">
+  <p><q>If you wish to forget anything on the spot, make a note that this thing is to be remembered.</q></p>
+  <footer>Edgar Allan Poe </footer>
+	</div >
+  <p><a class="btn btn-success myButton" href="#" role="button" data-toggle="modal" data-target="#myLoginModal">I wan to login</a></p>
+  <p><a class="btn btn-primary btn-sm" id='b_createAcc' href="#" role="button" data-toggle="modal" data-target="#myAccCreatenModal">I want to create account</a></p>
+  </div>
+</div><!-- jumbotron -->
+  <!--mylibs-->
+  <script src="./js/myLib/mylib.js"></script>
+  <script src="./js/loginVal.js"></script>
+  <script src="./js/createAccVal.js"></script>
+</body>
+</html>
